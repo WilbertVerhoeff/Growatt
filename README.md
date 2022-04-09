@@ -11,5 +11,5 @@ The TX and RX pin on the PCB are already twisted with the ESP so you can connect
 
 Tested and known working:
 
-ShineWifi-s
+ShineWifi-s <br>
 ShineWifi-x
