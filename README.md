@@ -8,3 +8,8 @@ Thanks to this guys i was able to convert the code to ESPHome so there is a one 
 The manufacturer has done a great job in making the connections available to easy flash the board with a ttl to serial adapter. I will make pictures of the ShineWifi-S that i have.
 
 The TX and RX pin on the PCB are already twisted with the ESP so you can connect TX to TX and RX to RX on your serial adapter. With the ShineWifi-S and my serial adapter i had nothing else to do then flash it BUT otti (https://github.com/otti/Growatt_ShineWiFi-S) "added a 1k resistor between the output of the SW1 and GPIO0" to get the board into boot mode on startup.
+
+Tested and known working:
+
+ShineWifi-s
+ShineWifi-x
