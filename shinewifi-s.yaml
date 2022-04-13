@@ -143,7 +143,7 @@ sensor:
     register_type: "read"
     unit_of_measurement: W
     device_class: power
-    icon: mdi:flash
+    icon: mdi:solar-power
     value_type: U_DWORD
     accuracy_decimals: 1
     filters:
@@ -155,7 +155,7 @@ sensor:
     register_type: "read"
     unit_of_measurement: kWh
     device_class: energy
-    icon: mdi:flash
+    icon: mdi:solar-power
     value_type: U_DWORD
     accuracy_decimals: 1
     filters:
@@ -168,7 +168,7 @@ sensor:
     unit_of_measurement: kWh
     state_class: total_increasing
     device_class: energy
-    icon: mdi:flash
+    icon: mdi:solar-power
     value_type: U_DWORD
     accuracy_decimals: 1
     filters:
