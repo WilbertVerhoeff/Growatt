@@ -9,14 +9,13 @@ esphome:
 esp8266:
   board: esp07s
 
-# Enable logging
 logger:
   baud_rate: 0
 # Enable Home Assistant API
 api:
 
 ota:
-  password: !secret ota_passwd
+  password: !secret ota_password
 
 wifi:
   ssid: !secret wifi_ssid
@@ -34,16 +33,13 @@ time:
     id: homeassistant_time
 
 output:
-# Blue Led
-  - id: light_bl
+  - id: light_blauw
     platform: gpio
     pin: 16
-# Green Led
-  - id: light_gr
+  - id: light_groen
     platform: gpio
     pin: 0
-# Red Led
-  - id: light_rd
+  - id: light_rood
     platform: gpio
     pin: 2
 
@@ -59,50 +55,43 @@ modbus:
   
 modbus_controller:
   - id: growatt
-# the Modbus device addr
     address: 0x1
     modbus_id: modbus1
     setup_priority: -10  
 
+text_sensor:
+  - platform: template
+    name: "${name} Status"
+    icon: mdi:eye
+    entity_category: diagnostic
+    lambda: |-
+      if (id(status).state = 1) {
+        return {"Normal"};
+      } else if (id(status).state = 0)  {
+        return {"Waiting"};
+      } else {
+        return {"Fault!"};
+      }
 
 sensor:
+  - platform: modbus_controller
+    address: 0
+    register_type: "read"
+    internal: true
+    id: status
+      
   - platform: modbus_controller
     name: "${name} DcPower"
     address: 1
     register_type: "read"
     unit_of_measurement: W
     device_class: power
+    entity_category: diagnostic
     icon: mdi:flash
     value_type: U_DWORD
     accuracy_decimals: 1
     filters:
     - multiply: 0.1
-    
-### FOR 2 STRING INVERTERS ENABLE THE 2 SENSORS BELOW ###    
-    
-#   - platform: modbus_controller
-#     name: "${name} Pv1 Power"
-#     address: 5
-#     register_type: "read"
-#     unit_of_measurement: W
-#     device_class: power
-#     icon: mdi:flash
-#     value_type: U_DWORD
-#     accuracy_decimals: 1
-#     filters:
-#     - multiply: 0.1
-    
-#   - platform: modbus_controller
-#     name: "${name} Pv2 Power"
-#     address: 9
-#     register_type: "read"
-#     unit_of_measurement: W
-#     device_class: power
-#     icon: mdi:flash
-#     value_type: U_DWORD
-#     accuracy_decimals: 1
-#     filters:
-#     - multiply: 0.1
     
   - platform: modbus_controller
     name: "${name} DcVoltage"
@@ -110,6 +99,7 @@ sensor:
     register_type: "read"
     unit_of_measurement: V
     device_class: voltage
+    entity_category: diagnostic
     icon: mdi:flash
     value_type: U_WORD
     accuracy_decimals: 1
@@ -122,17 +112,47 @@ sensor:
     register_type: "read"
     unit_of_measurement: A
     device_class: current
+    entity_category: diagnostic
     icon: mdi:flash
     value_type: U_WORD
     accuracy_decimals: 1
     filters:
     - multiply: 0.1
     
+# Enable the 2 sensors below when you have a 2 string inverter and want to know the values of the separate strings
+    
+#   - platform: modbus_controller
+#     name: "${name} Pv1 Power"
+#     address: 5
+#     register_type: "read"
+#     unit_of_measurement: W
+#     device_class: power
+#     entity_category: diagnostic
+#     icon: mdi:flash
+#     value_type: U_DWORD
+#     accuracy_decimals: 1
+#     filters:
+#     - multiply: 0.1
+
+#   - platform: modbus_controller
+#     name: "${name} Pv2 Power"
+#     address: 9
+#     register_type: "read"
+#     unit_of_measurement: W
+#     device_class: power
+#     entity_category: diagnostic
+#     icon: mdi:flash
+#     value_type: U_DWORD
+#     accuracy_decimals: 1
+#     filters:
+#     - multiply: 0.1
+    
   - platform: modbus_controller
     name: "${name} AcFrequency"
     address: 13
     register_type: "read"
     unit_of_measurement: Hz
+    entity_category: diagnostic
     icon: mdi:flash
     value_type: U_WORD
     accuracy_decimals: 1
@@ -145,6 +165,7 @@ sensor:
     register_type: "read"
     unit_of_measurement: V
     device_class: voltage
+    entity_category: diagnostic
     icon: mdi:flash
     value_type: U_WORD
     accuracy_decimals: 1
@@ -157,6 +178,7 @@ sensor:
     register_type: "read"
     unit_of_measurement: A
     device_class: current
+    entity_category: diagnostic
     icon: mdi:flash
     value_type: U_WORD
     accuracy_decimals: 1
@@ -199,14 +221,14 @@ sensor:
     accuracy_decimals: 1
     filters:
     - multiply: 0.1
-
     
   - platform: modbus_controller
     name: "${name} Temperature"
     address: 32
     register_type: "read"
-    unit_of_measurement: C
+    unit_of_measurement: °C
     device_class: temperature
+    entity_category: diagnostic
     icon: mdi:thermometer
     value_type: U_WORD
     accuracy_decimals: 1
