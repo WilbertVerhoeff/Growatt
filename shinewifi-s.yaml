@@ -1,6 +1,6 @@
 substitutions:
-  device_description: Growatt
-  friendly_name:  Growatt
+  device_description: Growatt Inverter
+  friendly_name:  Growatt Inverter
   name: Growatt
   
 esphome:
