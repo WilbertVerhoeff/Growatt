@@ -1,5 +1,5 @@
 # Growatt
-Growatt ShineWifi modbus with ESPHome code to run native in Home Assistant
+Growatt ShineWifi modbus with ESPHome code to run native in Home Assistan. For questions or discussion please visit https://community.home-assistant.io/t/esphome-modbus-growatt-shinewifi-s/369171
 
 Thanks to Jethro Kairys https://github.com/jkairys/growatt-esp8266 for his work of the Arduino code and otti https://github.com/otti/Growatt_ShineWiFi-S for his work on the ShineWifi hardware.
 
@@ -14,4 +14,4 @@ The TX and RX pin on the PCB are already twisted with the ESP so you can connect
 ## Tested and working
 
 ShineWifi-s <br>
-ShineWifi-x
+ShineWifi-x (thanks to pasarn (Pascal))<Br>
