@@ -1,6 +1,6 @@
 substitutions:
-  device_description: Growatt Inverter
-  friendly_name:  Growatt Inverter
+  device_description: Growatt
+  friendly_name:  Growatt
   name: Growatt
   
 esphome:
@@ -77,6 +77,32 @@ sensor:
     accuracy_decimals: 1
     filters:
     - multiply: 0.1
+    
+### FOR 2 STRING INVERTERS ENABLE THE 2 SENSORS BELOW ###    
+    
+#   - platform: modbus_controller
+#     name: "${name} Pv1 Power"
+#     address: 5
+#     register_type: "read"
+#     unit_of_measurement: W
+#     device_class: power
+#     icon: mdi:flash
+#     value_type: U_DWORD
+#     accuracy_decimals: 1
+#     filters:
+#     - multiply: 0.1
+    
+#   - platform: modbus_controller
+#     name: "${name} Pv2 Power"
+#     address: 9
+#     register_type: "read"
+#     unit_of_measurement: W
+#     device_class: power
+#     icon: mdi:flash
+#     value_type: U_DWORD
+#     accuracy_decimals: 1
+#     filters:
+#     - multiply: 0.1
     
   - platform: modbus_controller
     name: "${name} DcVoltage"
