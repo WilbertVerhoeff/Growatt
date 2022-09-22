@@ -177,7 +177,7 @@ sensor:
     
   - platform: modbus_controller
     name: "${devicename} Temperature"
-    address: 3093
+    address: 93
     register_type: "read"
     unit_of_measurement: C
     device_class: temperature
