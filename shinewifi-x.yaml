@@ -67,7 +67,7 @@ modbus_controller:
 
 sensor:
   - platform: modbus_controller
-    name: "${devicename} DcPower"
+    name: "${friendly_name} DcPower"
     address: 5
     register_type: "read"
     unit_of_measurement: W
@@ -79,7 +79,7 @@ sensor:
     - multiply: 0.1
         
   - platform: modbus_controller
-    name: "${devicename} DcVoltage"
+    name: "${friendly_name} DcVoltage"
     address: 3
     register_type: "read"
     unit_of_measurement: V
@@ -91,7 +91,7 @@ sensor:
     - multiply: 0.1
     
   - platform: modbus_controller
-    name: "${devicename} DcInputCurrent"
+    name: "${friendly_name} DcInputCurrent"
     address: 4
     register_type: "read"
     unit_of_measurement: A
@@ -103,7 +103,7 @@ sensor:
     - multiply: 0.1
     
   - platform: modbus_controller
-    name: "${devicename} AcFrequency"
+    name: "${friendly_name} AcFrequency"
     address: 37
     register_type: "read"
     unit_of_measurement: Hz
@@ -114,7 +114,7 @@ sensor:
     - multiply: 0.01
   
   - platform: modbus_controller
-    name: "${devicename} AcVoltage"
+    name: "${friendly_name} AcVoltage"
     address: 38
     register_type: "read"
     unit_of_measurement: V
@@ -126,7 +126,7 @@ sensor:
     - multiply: 0.1
   
   - platform: modbus_controller
-    name: "${devicename} AcOutputCurrent"
+    name: "${friendly_name} AcOutputCurrent"
     address: 39
     register_type: "read"
     unit_of_measurement: A
@@ -138,7 +138,7 @@ sensor:
     - multiply: 0.1
     
   - platform: modbus_controller
-    name: "${devicename} AcPower"
+    name: "${friendly_name} AcPower"
     address: 40
     register_type: "read"
     unit_of_measurement: W
@@ -150,7 +150,7 @@ sensor:
     - multiply: 0.1
     
   - platform: modbus_controller
-    name: "${devicename} EnergyToday"
+    name: "${friendly_name} EnergyToday"
     address: 53
     register_type: "read"
     unit_of_measurement: kWh
@@ -162,7 +162,7 @@ sensor:
     - multiply: 0.1
     
   - platform: modbus_controller
-    name: "${devicename} EnergyTotal"
+    name: "${friendly_name} EnergyTotal"
     address: 55
     register_type: "read"
     unit_of_measurement: kWh
@@ -176,7 +176,7 @@ sensor:
 
     
   - platform: modbus_controller
-    name: "${devicename} Temperature"
+    name: "${friendly_name} Temperature"
     address: 93
     register_type: "read"
     unit_of_measurement: C
